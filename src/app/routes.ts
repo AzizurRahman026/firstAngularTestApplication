@@ -13,6 +13,11 @@ const routeConfig: Routes = [
         component: DetailsComponent,
         title: 'Details Page'
     }
+    ,{
+        path : 'details/:id',
+        component: DetailsComponent,
+        title: 'Details Page'
+    }
 ];
 
 export default routeConfig;
