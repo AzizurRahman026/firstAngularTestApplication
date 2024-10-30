@@ -5,7 +5,30 @@ import { HousingLocation } from './housing-location';
   providedIn: 'root'
 })
 export class HousingService {
-  // url: "http://localhost:3000/locations";
+  url:string = "http://localhost:5015/locations";
+
+  constructor() { }
+
+async getAllHOusingLocations() : Promise<HousingLocation[]> {
+    const data = await fetch(this.url);
+    console.log(data);
+    return await data.json() ?? [];
+  }
+
+  async getHousingLocationById(id: Number) : Promise<HousingLocation | undefined> {
+    const data = await fetch(`${this.url}/${id}`);
+    return await data.json() ?? {};
+  }
+
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(firstName, lastName, email);
+  }
+
+
+
+  /*
+
+  protected housingLocationList: HousingLocation[] = [];
   protected housingLocationList: HousingLocation[] = [
     {
       id: 0,
@@ -109,7 +132,7 @@ export class HousingService {
     }
   ];
 
-  constructor() { }
+constructor() { }
 
 //  async getAllHOusingLocations() : Promise<HousingLocation[]> {
 getAllHOusingLocations() : HousingLocation[] {
@@ -126,5 +149,8 @@ getAllHOusingLocations() : HousingLocation[] {
   submitApplication(firstName: string, lastName: string, email: string) {
     console.log(firstName, lastName, email);
   }
-  
+
+
+  */
+
 }
